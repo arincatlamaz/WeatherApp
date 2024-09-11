@@ -1,20 +1,22 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id(Dependencies.android)
+    id(Dependencies.kotlinAndroid)
+    id(Dependencies.hiltAndroidPlugin)
+    id(Dependencies.kspPlugin)
 }
 
 android {
-    namespace = "com.arincatlamaz.weatherapp"
-    compileSdk = 34
+    namespace = Versions.namespace
+    compileSdk = Versions.compileSdk
 
     defaultConfig {
-        applicationId = "com.arincatlamaz.weatherapp"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Versions.applicationId
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Versions.testInstrumentationRunner
     }
 
     buildTypes {
@@ -45,4 +47,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    hilt()
+    ksp(Dependencies.kspHilt)
 }

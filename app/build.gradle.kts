@@ -3,6 +3,8 @@ plugins {
     id(Dependencies.kotlinAndroid)
     id(Dependencies.hiltAndroidPlugin)
     id(Dependencies.kspPlugin)
+    id("org.jetbrains.kotlin.android")
+
 }
 
 android {
@@ -44,10 +46,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(project(":data"))
+    implementation(project(":network"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     hilt()
     ksp(Dependencies.kspHilt)
+    fragment()
+    mvvm()
+    navigation()
+
 }

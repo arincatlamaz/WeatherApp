@@ -18,7 +18,7 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    const val rxJava = "com.squareup.retrofit2:adapter-rxjava:${Versions.retrofit}"
+
 
     //ViewModel&LiveData
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.VIEWMODELLIVEDATA}"
@@ -46,6 +46,11 @@ object Dependencies {
 
 }
 
+fun DependencyHandler.coroutines(){
+    implementation(Dependencies.coroutines)
+    implementation(Dependencies.coroutinesAndroid)
+}
+
 fun DependencyHandler.fragment(){
     implementation(Dependencies.fragment)
 }
@@ -54,8 +59,8 @@ fun DependencyHandler.navigation(){
     implementation(Dependencies.navFragment)
     implementation(Dependencies.navUi)
     implementation(Dependencies.navSupport)
-    implementation(Dependencies.navSafeArgs)
-    implementation(Dependencies.navPlugin)
+//    implementation(Dependencies.navSafeArgs)
+//    implementation(Dependencies.navPlugin)
 }
 
 fun DependencyHandler.hilt() {

@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.arincatlamaz.weatherapp.R
+import com.arincatlamaz.weatherapp.utils.TimeUtils
 import com.arincatlamaz.weatherapp.vm.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +26,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         val cityNameInput = view.findViewById<EditText>(R.id.cityNameInput)
         val searchButton = view.findViewById<Button>(R.id.searchButton)
         val weatherTextView = view.findViewById<TextView>(R.id.weatherTextView)
+        val timeTextView = view.findViewById<TextView>(R.id.timeTextView)
 
         searchButton.setOnClickListener {
             val city = cityNameInput.text.toString()
@@ -34,7 +36,12 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }
 
         viewModel.weather.observe(viewLifecycleOwner) { weatherResponse ->
-            weatherTextView.text = "Temperature: ${weatherResponse.main.temp}°C"
+            val temp = weatherResponse.main.temp
+            val weatherDescription = weatherResponse.weather[0].description
+            weatherTextView.text = "Temperature: ${weatherResponse.main.temp}°C, Weather: ${weatherDescription}"
+
+            val localTime = TimeUtils.unixToLocalTime(weatherResponse.dt, weatherResponse.timezone)
+            timeTextView.text = "Local Time: $localTime"
         }
     }
 

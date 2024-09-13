@@ -6,6 +6,7 @@ object Dependencies {
     const val ktx = "androidx.core:core-ktx${Versions.ktx}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinGradlePlugin}"
+    const val jetbrainsKotlinAndroid = "org.jetbrains.kotlin.android"
 
     //RecyclerView
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.RECYCLERVIEW}"
